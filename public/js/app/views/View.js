@@ -1,8 +1,10 @@
 // View.js
 // -------
-define(["jquery", "backbone", "models/Model", "text!templates/heading.html"],
 
-    function($, Backbone, Model, template){
+define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "views/auth"],
+
+    function($, Backbone, Model, template, AuthView){
+
 
         var View = Backbone.View.extend({
 
@@ -20,8 +22,28 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html"],
             // View Event Handlers
             events: {
 
+                "click .test-button": "testFun"
             },
+            testFun: function() {
+                var authView= new AuthView();
 
+                var str_json = JSON.stringify({
+                    title: "Brand New Scarf",
+                    description: "goody",
+                    condition: "New",
+                    imageURL: "img/scarf.jpg",
+                    size: "32",
+                    category: "Accessories"
+                });
+
+                 var request= new XMLHttpRequestObject();
+
+                    request.open("POST", "JSON_Handler.php", true);
+
+                    request.setRequestHeader("Content-type", "application/json");
+
+                    request.send(str_json);
+            },
             // Renders the view's template to the UI
             render: function() {
 

@@ -1,5 +1,12 @@
+
 .idea
 node_modules/
 coverage/
 reports/
 public/reports/
+
+node_modules
+public/js/libs/*
+!public/js/libs/plugins
+server/config/**
+
