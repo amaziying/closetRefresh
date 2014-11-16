@@ -1,11 +1,5 @@
 
 
-    <script type="text/javascript" src="../../../libs/jasny-bootstrap.js"></script>
-
-    <link href="../../../css/jasny-bootstrap.css" rel="stylesheet">
-
-    <link href="../../../css/bootstrap.css" rel="stylesheet">
-
 <div class="container">
 
 <div class="page-header">
@@ -34,11 +28,8 @@
                     <option>Jeans</option>  
                     <option>Skirts</option>
                     <option>Coats</option>
-                    <option>Jackets</option>  
-                    <option>Gowns</option>  
-                    <option>Trousers</option>
-                    <option>Shorts</option>
-                    <option>Shawls and Wraps</option>       
+                    <option>Jackets</option>
+                    <option>Formalware</option>   
                 </select> <br>  
                  <div class="form-group">
                     <label for="Size">Size</label>
@@ -49,7 +40,15 @@
                     <option>L</option>
                     <option>XL</option>
                     <option>XXL</option>        
-                </select> <br>     
+                </select> <br>
+                <div class="form-group">
+                    <label for="Condition">Condition</label>
+                <select class="form-control" name="Condition" id="Condition" required>
+                    <option>New</option>
+                    <option>Like new</option>
+                    <option>Good</option>  
+                    <option>Old</option>      
+                </select> <br>       
                 <div class="form-group">
                     <label for="Price">Price</label>
                     <div class="input-group">
@@ -66,11 +65,10 @@
                 </div>
                 </div> 
                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                      <span class="btn btn-default btn-file"><span class="fileinput-new">Add Picture</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                      <span class="btn btn-default btn-file"><span class="fileinput-new">Add Picture</span><span class="fileinput-exists">Change</span><input id="imageURL" type="file" name="..."></span>
                       <span class="fileinput-filename"></span>
                       <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
                 </div>
-            <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right"> <br>
         </form>
         <br>
     </div>

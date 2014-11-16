@@ -45,11 +45,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"></i></a></h2>
-      <p class="stat">72.40</p>
+      <p class="stat">72.36</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC"></i></h2>
-      <p class="stat">55</p>
+      <p class="stat">94</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +63,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty"></i></a></h2>
-      <p class="stat">8.78</p>
+      <p class="stat">11.92</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs"></i></a></h2>
-      <p class="stat">0.23</p>
+      <p class="stat">0.59</p>
     </div>
   </div>
 </div>
@@ -93,9 +93,9 @@
     <textarea id="file-source" class="col-md-12">// View.js
 // -------
 
-define([&quot;jquery&quot;, &quot;backbone&quot;, &quot;models/Model&quot;, &quot;text!templates/heading.html&quot;, &quot;views/auth&quot;, &quot;views/postPill&quot;, &quot;models/postModel&quot;],
+define([&quot;jquery&quot;, &quot;backbone&quot;, &quot;models/Model&quot;, &quot;text!templates/heading.html&quot;, &quot;views/newPost&quot;, &quot;views/postPill&quot;, &quot;models/postModel&quot;],
 
-    function($, Backbone, Model, template, AuthView, PostPillView, PostModel){
+    function($, Backbone, Model, template, newPost, PostPillView, PostModel){
 
 
         var View = Backbone.View.extend({
@@ -104,7 +104,8 @@ define([&quot;jquery&quot;, &quot;backbone&quot;, &quot;models/Model&quot;, &quo
             el: &quot;.body-main&quot;,
 
             // View constructor
-            initialize: function() {
+            initialize: function(opts) {
+                this.model= opts.model;
 
                 // Calls the view&#039;s render method
                 this.render();
@@ -113,6 +114,7 @@ define([&quot;jquery&quot;, &quot;backbone&quot;, &quot;models/Model&quot;, &quo
 
             // View Event Handlers
             events: {
+                &quot;click #add-new-item&quot;: &quot;showNewForm&quot;
 
             },
 
@@ -126,14 +128,51 @@ define([&quot;jquery&quot;, &quot;backbone&quot;, &quot;models/Model&quot;, &quo
                 var postPillView= new PostPillView({model:postModel});
             },
 
+            showNewForm: function() {
+                this.newForm = new newPost({model:this.model});
+                this.newForm.render();
+            },
+
+            _getPointsOfInterest: function() {
+                var that = this;
+                var pointsOfInterests = [];
+
+                function getLocation () {
+                    var deferred = $.Deferred();
+                    if (Modernizr.geolocation) {
+                        deferred.resolve();
+                        this.model.currentLocation = navigator.geolocation.getCurrentPosition(show_map);
+
+                    } else {
+                    // no native support; maybe try a fallback?
+                        deferred.reject();
+                        console.log();
+                    }
+                }
+
+                function show_map(position) {
+                    this.model.latitude = position.coords.latitude;
+                    this.model.longitude = position.coords.longitude;
+                  // let&#039;s show a map or do something interesting!
+                }
+                this.model.POIObject = $.getJSON(&quot;http://app.kitchener.ca/opendata/Json/points_of_interest.json&quot;).then(getLocation).done(function () {
+                    pointsOfInterests.push([&quot;GREYHOUND BUS TERMINAL&quot;, &quot;GO TRANSIT TRAIN&quot;, &quot;QUEEN ST STONE MARKER&quot;]);
+                });
+                return pointsOfInterests;
+            },
+
             // Renders the view&#039;s template to the UI
             render: function() {
+                this._getPointsOfInterest();
+
 
                 // Setting the view&#039;s template property using the Underscore template method
                 this.template = _.template(template, {});
 
                 // Dynamically updates the UI with the view&#039;s template
                 this.$el.html(this.template);
+
+                this.testFun();
 
                 // Maintains chainability
                 return this;
