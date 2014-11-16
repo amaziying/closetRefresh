@@ -12,7 +12,8 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             el: ".body-main",
 
             // View constructor
-            initialize: function() {
+            initialize: function(opts) {
+                this.model= opts.model;
 
                 // Calls the view's render method
                 this.render();
@@ -21,6 +22,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
 
             // View Event Handlers
             events: {
+                "click #add-new-item": "showNewForm"
 
             },
 
@@ -34,14 +36,48 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
                 var postPillView= new PostPillView({model:postModel});
             },
 
+            showNewForm: function() {
+
+            },
+
+            _getPointsOfInterest: function() {
+                var that = this;
+                var pointsOfInterests = [];
+
+                function getLocation () {
+                    var deferred = $.Deferred();
+                    if (Modernizr.geolocation) {
+                        deferred.resolve();
+                        this.model.currentLocation = navigator.geolocation.getCurrentPosition(show_map);
+
+                    } else {
+                    // no native support; maybe try a fallback?
+                        deferred.reject();
+                        console.log();
+                    }
+                }
+
+                function show_map(position) {
+                    this.model.latitude = position.coords.latitude;
+                    this.model.longitude = position.coords.longitude;
+                  // let's show a map or do something interesting!
+                }
+                this.model.POIObject = $.getJSON("http://app.kitchener.ca/opendata/Json/points_of_interest.json").then(getLocation).done(function () {
+                    pointsOfInterests.push("")
+                });
+            },
+
             // Renders the view's template to the UI
             render: function() {
+                this._getPointsOfInterest();
 
                 // Setting the view's template property using the Underscore template method
                 this.template = _.template(template, {});
 
                 // Dynamically updates the UI with the view's template
                 this.$el.html(this.template);
+
+
 
                 // Maintains chainability
                 return this;
