@@ -5,7 +5,7 @@ define(["jquery", "backbone"],
     function($, Backbone) {
 
         // Creates a new Backbone Model class object
-        var newPostModel = Backbone.Model.extend({
+        var postModel = Backbone.Model.extend({
 
             // Model Constructor
             initialize: function() {
@@ -25,7 +25,7 @@ define(["jquery", "backbone"],
         });
 
         // Returns the Model class
-        return newPostModel;
+        return postModel;
 
     }
 
