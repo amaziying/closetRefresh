@@ -12,8 +12,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             el: ".body",
 
             // View constructor
-            initialize: function(opts) {
-                this.model= opts.model;
+            initialize: function() {
 
                 // Calls the view's render method
                 this.render();
@@ -27,7 +26,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             },
             addPost: function(model){
                 var newPillView= new PostPillView({model:model});
-            }
+            },
             testFun: function() {
                 var authView= new AuthView();
                 var postModel = new PostModel();
@@ -74,7 +73,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
 
             // Renders the view's template to the UI
             render: function() {
-                this._getPointsOfInterest();
+               // this._getPointsOfInterest();
 
 
                 // Setting the view's template property using the Underscore template method
