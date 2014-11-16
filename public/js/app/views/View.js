@@ -37,6 +37,8 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             },
 
             showNewForm: function() {
+                this.newForm= new DetailView({model:this.model});
+                this.newForm.render();
 
             },
 
@@ -63,13 +65,15 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
                   // let's show a map or do something interesting!
                 }
                 this.model.POIObject = $.getJSON("http://app.kitchener.ca/opendata/Json/points_of_interest.json").then(getLocation).done(function () {
-                    pointsOfInterests.push("")
+                    pointsOfInterests.push(["GREYHOUND BUS TERMINAL", "GO TRANSIT TRAIN", "QUEEN ST STONE MARKER"]);
                 });
+                return pointsOfInterests;
             },
 
             // Renders the view's template to the UI
             render: function() {
                 this._getPointsOfInterest();
+
 
                 // Setting the view's template property using the Underscore template method
                 this.template = _.template(template, {});
