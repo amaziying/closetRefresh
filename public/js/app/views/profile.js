@@ -34,6 +34,8 @@ define(["jquery", "backbone", "models/profileModel", "text!templates/profile.htm
                 // Maintains chainability
                 return this;
 
+                
+
             }
 
         });

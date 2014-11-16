@@ -379,3 +379,13 @@ a:hover {
   }
 }
 /*  */
+.header-profile,
+.header-home {
+  display: inline-block;
+  width: 250px;
+  font-size: 28px;
+}
+.cbp-vm-options {
+  display: inline-block;
+  float: right;
+}
