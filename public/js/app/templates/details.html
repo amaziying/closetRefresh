@@ -26,66 +26,40 @@
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="closeModal" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" id="makeDeal"class="btn btn-primary">Make a Deal</button>
+        <div id="dealForm">
+
+			<h1 class="text-center">Make An Offer</h1> <br> 
+			<!-- Split button -->
+			<div style="text-align: center; position:relative; width: 100%; border-width: 1px 0 0 0; ">
+			  <button type="button" class="btn btn-success">Trade Item</button> <br> 
+			</div>
+
+			<h3 class="text-center">And/Or</h3> <br>
+
+			<div style="text-align: center; position:relative; width: 100%; border-width: 1px 0 0 0; ">
+			  <button type="button " id="" class="btn btn-success">Pay Cash</button>
+			</div> <br> <br> <br>
+
+
+
+			    <div class="row">
+			        <div class="col-md-12">
+			            <form role="form">
+							<div class="form-group">
+			                    <label for="Payment">Enter Payment Offer</label>
+			                    <div class="input-group">
+			                        <input type="text" class="form-control" name="Payment" id="Payment" placeholder="$$$" required>
+			                        <span class="input-group-addon">
+			                    </div> 
+			                </div>
+			                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right"> <br>
+			            </form>
+			        </div>
+			    </div>
+
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
-<!--<div class="customModal  detailsModal" tabindex="-1">
-  <div class="">
-    <div class="modal-content">
-    	<div class="customModal-header"> <%= model.get("title")%></div>
-      <div id="postDetails">
-      	<div class="row mainInfo">
-      		<div class="col-xs-3">
-      			<img href="#"+ <%= model.get("imageURL") %>></img>
-      		</div>
-      		<div class="col-xs-4">
-
-      		</div>
-      	</div>
-      	<div class="row postDescription">
-      		<p><%= model.get("description") %></p>
-      	</div>
-      	<div class="customModal-footer">
-	        <button type="button" class="btn btn-default" id="closeModal" >Close</button>
-	        <button type="button" id="makeDeal" class="btn btn-primary">Make a Deal</button>
-      	</div>
-      </div>
-      <div id="dealForm">
-
-      </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-<div class="customModal detailsModal">
-	<div class="customModal-content">
-		<h1 class="modal-header"> <%= model.get("title")%></h1>
-		 <div id="postDetails">
-      	<div class="row mainInfo">
-      		<div class="col-xs-3">
-      			<img href="#"+ <%= model.get("imageURL") %>></img>
-      		</div>
-      		<div class="col-xs-4">
-
-      		</div>
-      	</div>
-      	<div class="row postDescription">
-      		<p><%= model.get("description") %></p>
-      	</div>
-      	<div class="customModal-footer">
-	        <button type="button" class="btn btn-default" id="closeModal" >Close</button>
-	        <button type="button" id="makeDeal" class="btn btn-primary">Make a Deal</button>
-      	</div>
-      </div>
-      <div id="dealForm">
-
-      </div>
-
-	</div>
-
-
-</div>!-->
