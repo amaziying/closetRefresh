@@ -1,5 +1,5 @@
 
-define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html", "views/details"],
+define(["jquery", "backbone", "models/postModel", "text!templates/details.html"],
 
     function($, Backbone, model, template, DetailView){
 
@@ -7,11 +7,13 @@ define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html"
         var View = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: ".examplePostPill",
+            el: ".dialog",
             
             // View constructor
             initialize: function(opts) {
                 this.model= opts.model
+                this.dealForm = $("#dealForm");
+                this.readForm  = $("#postDetails");
                 // Calls the view's render method
                 this.render();
 
@@ -19,16 +21,12 @@ define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html"
 
             // View Event Handlers
             events: {
-                "click .postPill": "showMore"
+                "click .postPill": "makeDeal"
             },
-            showMore: function() {
-                if(this.detailView){
-                    this.detailView.show;
-                }else {
-                    this.detailView= new DetailView({model:this.model});
-                    this.hide();
-                }
-
+            makeDeal: function() {
+                this.readForm.hide;
+                this.dealFrom.addClass("open");
+                
             },
             // Renders the view's template to the UI
             render: function() {

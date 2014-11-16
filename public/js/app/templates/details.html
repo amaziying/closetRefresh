@@ -1,0 +1,29 @@
+<div class="modal fade detailsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    	<div class="modal-header"> <%= model.get("title")%></div>
+      <div id="postDetails">
+      	<div class="row mainInfo">
+      		<div class="col-xs-3">
+      			<img href="#"+ <%= model.get("imageURL") %>></img>
+      		</div>
+      		<div class="col-xs-4">
+
+      		</div>
+      	</div>
+      	<div class="row postDescription">
+      		<p><%= model.get("description") %></p>
+      	</div>
+      	<div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Make a Deal</button>
+      	</div>
+      </div>
+      <div id="dealForm">
+      		
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
