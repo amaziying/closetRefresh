@@ -1,9 +1,9 @@
 // View.js
 // -------
 
-define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "views/auth"],
+define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "views/auth", "views/postPill", "models/postModel"],
 
-    function($, Backbone, Model, template, AuthView){
+    function($, Backbone, Model, template, AuthView, PostPillView, PostModel){
 
 
         var View = Backbone.View.extend({
@@ -26,23 +26,12 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             },
             testFun: function() {
                 var authView= new AuthView();
-
-                var str_json = JSON.stringify({
-                    title: "Brand New Scarf",
-                    description: "goody",
-                    condition: "New",
-                    imageURL: "img/scarf.jpg",
-                    size: "32",
-                    category: "Accessories"
-                });
-
-                 var request= new XMLHttpRequestObject();
-
-                    request.open("POST", "JSON_Handler.php", true);
-
-                    request.setRequestHeader("Content-type", "application/json");
-
-                    request.send(str_json);
+                var postModel = new PostModel();
+                postModel.set("title", "New Shirt");
+                postModel.set("price", "$15.00");
+                postModel.set("description","YO THIS IS DA BOMB");
+                postModel.set("imageURL","http://www.hey-man-nice-shirt.com.au/heyman/home_products/TRILLIONAIRE_NAVY-2.jpg")
+                var postPillView= new PostPillView({model:postModel});
             },
             // Renders the view's template to the UI
             render: function() {

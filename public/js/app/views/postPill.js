@@ -1,17 +1,17 @@
-// View.js
-// -------
-define(["jquery", "backbone", "models/postModel", "text!templates/newPost.html"],
 
-    function($, Backbone, Model, template){
+define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html"],
 
-        var newPost = Backbone.View.extend({
+    function($, Backbone, model, template){
+
+
+        var View = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: ".example",
-
+            el: ".examplePostPill",
+            
             // View constructor
-            initialize: function() {
-
+            initialize: function(opts) {
+                this.model= opts.model
                 // Calls the view's render method
                 this.render();
 
@@ -24,9 +24,9 @@ define(["jquery", "backbone", "models/postModel", "text!templates/newPost.html"]
 
             // Renders the view's template to the UI
             render: function() {
-
+                debugger;
                 // Setting the view's template property using the Underscore template method
-                this.template = _.template(template, {});
+                this.template = _.template(template, {model: this.model});
 
                 // Dynamically updates the UI with the view's template
                 this.$el.html(this.template);
@@ -39,7 +39,7 @@ define(["jquery", "backbone", "models/postModel", "text!templates/newPost.html"]
         });
 
         // Returns the View class
-        return newPost;
+        return View;
 
     }
 
