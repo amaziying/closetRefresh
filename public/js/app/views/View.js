@@ -9,7 +9,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
         var View = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: ".example",
+            el: ".body-main",
 
             // View constructor
             initialize: function() {
@@ -22,8 +22,8 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             // View Event Handlers
             events: {
 
-                "click .test-button": "testFun"
             },
+
             testFun: function() {
                 var authView= new AuthView();
                 var postModel = new PostModel();
@@ -33,6 +33,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
                 postModel.set("imageURL","http://www.hey-man-nice-shirt.com.au/heyman/home_products/TRILLIONAIRE_NAVY-2.jpg")
                 var postPillView= new PostPillView({model:postModel});
             },
+
             // Renders the view's template to the UI
             render: function() {
 

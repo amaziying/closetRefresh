@@ -89,6 +89,25 @@ module.exports = function(grunt) {
             'public/reports': ['public/js/app/**/*.js']
         }
       }
+    },
+    less: {
+      development: {
+        options: {
+          paths: "./public/css/commonstyles.less"
+        },
+        files: {
+          "./public/css/commonstyles.css": "./public/css/commonstyles.less"
+        }
+      },
+      production: {
+        options: {
+          paths: "./public/css/commonstyles.less"//,
+          //cleancss: true
+        },
+        files: {
+          "./public/css/commonstyles.css": "./public/css/commonstyles.less"
+        }
+      }
     }
   });
 
@@ -99,7 +118,7 @@ module.exports = function(grunt) {
   grunt.registerTask('mobileBuild', function() {
     grunt.task.run(['requirejs:mobileJS', 'requirejs:mobileCSS']);
   });
-
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-plato');
@@ -108,5 +127,5 @@ module.exports = function(grunt) {
   grunt.registerTask('minify', ['requirejs:desktopJS', 'requirejs:mobileJS']);
   grunt.registerTask('complexity:report', 'plato');
   grunt.registerTask('build', ['desktopBuild', 'mobileBuild']);
-  grunt.registerTask('default', ['test', 'build', 'complexity:report']);
+  grunt.registerTask('default', ['test', 'build', 'complexity:report', 'less']);
 };

@@ -1,4 +1,13 @@
+
 <!-- HTML Template -->
-<div class="container">
-	<button class="test-button">Click Me</button>
+
+<script src="../../libs/viewModelSwitch.js"></script>
+<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+		<button class="test-button">Click Me</button>
+    <div class="cbp-vm-options">
+        <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
+        <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
+    </div>
+    <ul id="listview-parent">
+    </ul>
 </div>
