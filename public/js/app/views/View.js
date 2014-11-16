@@ -9,7 +9,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
         var View = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: ".example",
+            el: ".body-main",
 
             // View constructor
             initialize: function() {
@@ -22,28 +22,8 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             // View Event Handlers
             events: {
 
-                "click .test-button": "testFun"
             },
-            testFun: function() {
-                var authView= new AuthView();
 
-                var str_json = JSON.stringify({
-                    title: "Brand New Scarf",
-                    description: "goody",
-                    condition: "New",
-                    imageURL: "img/scarf.jpg",
-                    size: "32",
-                    category: "Accessories"
-                });
-
-                 var request= new XMLHttpRequestObject();
-
-                    request.open("POST", "JSON_Handler.php", true);
-
-                    request.setRequestHeader("Content-type", "application/json");
-
-                    request.send(str_json);
-            },
             // Renders the view's template to the UI
             render: function() {
 
