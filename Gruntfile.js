@@ -123,9 +123,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-plato');
    
-  grunt.registerTask('test', ['jshint']);
+  //grunt.registerTask('test', ['jshint']);
   grunt.registerTask('minify', ['requirejs:desktopJS', 'requirejs:mobileJS']);
   grunt.registerTask('complexity:report', 'plato');
   grunt.registerTask('build', ['desktopBuild', 'mobileBuild']);
-  grunt.registerTask('default', ['test', 'build', 'complexity:report', 'less']);
+  grunt.registerTask('default', [ 'build', 'complexity:report', 'less']);
 };

@@ -1,9 +1,9 @@
 // View.js
 // -------
 
-define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "views/auth", "views/postPill", "models/postModel"],
+define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "views/newPost", "views/postPill", "models/postModel"],
 
-    function($, Backbone, Model, template, AuthView, PostPillView, PostModel){
+    function($, Backbone, Model, template, newPost, PostPillView, PostModel){
 
 
         var View = Backbone.View.extend({
@@ -14,6 +14,9 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             // View constructor
             initialize: function() {
 
+                this.model = new Model();
+
+
                 // Calls the view's render method
                 this.render();
 
@@ -21,14 +24,13 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
 
             // View Event Handlers
             events: {
-                "click #add-new-item": "showNewForm"
+                "click #add-new-post": "showNewForm"
 
             },
             addPost: function(model){
                 var newPillView= new PostPillView({model:model});
             },
             testFun: function() {
-                var authView= new AuthView();
                 var postModel = new PostModel();
                 postModel.set("title", "New Shirt");
                 postModel.set("price", "$15.00");
@@ -38,11 +40,10 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             },
 
             showNewForm: function() {
-                this.newForm= new DetailView({model:this.model});
+                this.newForm = new newPost({mode:Model});
                 this.newForm.render();
-
             },
-
+/*
             _getPointsOfInterest: function() {
                 var that = this;
                 var pointsOfInterests = [];
@@ -69,11 +70,12 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
                     pointsOfInterests.push(["GREYHOUND BUS TERMINAL", "GO TRANSIT TRAIN", "QUEEN ST STONE MARKER"]);
                 });
                 return pointsOfInterests;
-            },
+            },*/
 
             // Renders the view's template to the UI
             render: function() {
-               // this._getPointsOfInterest();
+            //this._getPointsOfInterest();
+
 
 
                 // Setting the view's template property using the Underscore template method
