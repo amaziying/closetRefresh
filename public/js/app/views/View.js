@@ -42,7 +42,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
 
                 // Dynamically updates the UI with the view's template
                 this.$el.html(this.template);
-
+                this.testFun();
                 // Maintains chainability
                 return this;
 
