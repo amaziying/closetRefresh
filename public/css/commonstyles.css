@@ -192,8 +192,7 @@ a:hover {
 /* options/select wrapper with switch anchors */
 .cbp-vm-options {
   text-align: right;
-  padding-bottom: 10px;
-  border-bottom: 3px solid #47a3da;
+  padding: 10px;
 }
 .cbp-vm-options a {
   display: inline-block;
@@ -379,3 +378,23 @@ a:hover {
   }
 }
 /*  */
+.header-profile,
+.header-home {
+  display: inline-block;
+  width: 250px;
+  font-size: 28px;
+  float: left;
+  text-align: center;
+  border-right: ;
+}
+.cbp-vm-options {
+  display: inline-block;
+  float: right;
+}
+.nav-bar {
+  border-bottom: 3px solid #47a3da;
+  padding-bottom: 10px;
+}
+#search-submit {
+  padding-left: 10px;
+}

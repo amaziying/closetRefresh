@@ -30,7 +30,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
                 postModel.set("title", "New Shirt");
                 postModel.set("price", "$15.00");
                 postModel.set("description","YO THIS IS DA BOMB");
-                postModel.set("imageURL","http://www.hey-man-nice-shirt.com.au/heyman/home_products/TRILLIONAIRE_NAVY-2.jpg")
+                postModel.set("imageURL","http://www.hey-man-nice-shirt.com.au/heyman/home_products/TRILLIONAIRE_NAVY-2.jpg");
                 var postPillView= new PostPillView({model:postModel});
             },
 

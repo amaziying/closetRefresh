@@ -11,7 +11,7 @@ define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html"
             
             // View constructor
             initialize: function(opts) {
-                this.model= opts.model
+                this.model= opts.model;
                 // Calls the view's render method
                 this.render();
 
