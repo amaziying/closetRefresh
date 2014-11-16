@@ -45,11 +45,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"></i></a></h2>
-      <p class="stat">76.55</p>
+      <p class="stat">72.40</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC"></i></h2>
-      <p class="stat">45</p>
+      <p class="stat">55</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +63,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty"></i></a></h2>
-      <p class="stat">8.02</p>
+      <p class="stat">8.78</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs"></i></a></h2>
-      <p class="stat">0.12</p>
+      <p class="stat">0.23</p>
     </div>
   </div>
 </div>
@@ -93,9 +93,9 @@
     <textarea id="file-source" class="col-md-12">// View.js
 // -------
 
-define([&quot;jquery&quot;, &quot;backbone&quot;, &quot;models/Model&quot;, &quot;text!templates/heading.html&quot;, &quot;views/auth&quot;],
+define([&quot;jquery&quot;, &quot;backbone&quot;, &quot;models/Model&quot;, &quot;text!templates/heading.html&quot;, &quot;views/auth&quot;, &quot;views/postPill&quot;, &quot;models/postModel&quot;],
 
-    function($, Backbone, Model, template, AuthView){
+    function($, Backbone, Model, template, AuthView, PostPillView, PostModel){
 
 
         var View = Backbone.View.extend({
@@ -114,6 +114,16 @@ define([&quot;jquery&quot;, &quot;backbone&quot;, &quot;models/Model&quot;, &quo
             // View Event Handlers
             events: {
 
+            },
+
+            testFun: function() {
+                var authView= new AuthView();
+                var postModel = new PostModel();
+                postModel.set(&quot;title&quot;, &quot;New Shirt&quot;);
+                postModel.set(&quot;price&quot;, &quot;$15.00&quot;);
+                postModel.set(&quot;description&quot;,&quot;YO THIS IS DA BOMB&quot;);
+                postModel.set(&quot;imageURL&quot;,&quot;http://www.hey-man-nice-shirt.com.au/heyman/home_products/TRILLIONAIRE_NAVY-2.jpg&quot;);
+                var postPillView= new PostPillView({model:postModel});
             },
 
             // Renders the view&#039;s template to the UI

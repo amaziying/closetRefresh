@@ -11,7 +11,7 @@ define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html"
             
             // View constructor
             initialize: function(opts) {
-                this.model= opts.model
+                this.model= opts.model;
                 // Calls the view's render method
                 this.render();
 
@@ -24,7 +24,6 @@ define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html"
 
             // Renders the view's template to the UI
             render: function() {
-                debugger;
                 // Setting the view's template property using the Underscore template method
                 this.template = _.template(template, {model: this.model});
 
