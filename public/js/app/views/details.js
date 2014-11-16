@@ -21,12 +21,17 @@ define(["jquery", "backbone", "models/postModel", "text!templates/details.html"]
 
             // View Event Handlers
             events: {
-                "click .postPill": "makeDeal"
+                "click #makeDeal": "makeDeal",
+                "click #closeModal": "backToHome"
+            },
+            backToHome: function() {
+                //this.unbind();
+                this.$el.find("modal").hide();
             },
             makeDeal: function() {
                 this.readForm.hide;
                 this.dealFrom.addClass("open");
-                
+
             },
             // Renders the view's template to the UI
             render: function() {
@@ -34,7 +39,9 @@ define(["jquery", "backbone", "models/postModel", "text!templates/details.html"]
                 this.template = _.template(template, {model: this.model});
 
                 // Dynamically updates the UI with the view's template
-                this.$el.html(this.template);
+                this.$el.append(this.template);
+                this.$el.modal("show");
+                
 
                 // Maintains chainability
                 return this;

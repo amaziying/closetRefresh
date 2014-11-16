@@ -7,7 +7,7 @@ define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html"
         var View = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: ".examplePostPill",
+            el: "#listview-parent",
             
             // View constructor
             initialize: function(opts) {
@@ -23,11 +23,11 @@ define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html"
             },
             showMore: function() {
                 if(this.detailView){
-                    this.detailView.show;
+                    this.detailView.$el.find(".customModal").modal("show");
                 }else {
                     this.detailView= new DetailView({model:this.model});
-                    this.hide();
                 }
+              //  $("body").addClass("overlay");
 
             },
             // Renders the view's template to the UI
@@ -36,7 +36,7 @@ define(["jquery", "backbone", "models/postModel", "text!templates/postPill.html"
                 this.template = _.template(template, {model: this.model});
 
                 // Dynamically updates the UI with the view's template
-                this.$el.html(this.template);
+                this.$el.append(this.template);
 
                 // Maintains chainability
                 return this;
