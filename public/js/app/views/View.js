@@ -9,11 +9,11 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
         var View = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: ".body-main",
+            el: ".body",
 
             // View constructor
             initialize: function() {
-
+            Backbone.Events.on{"addPost":this.addPost(post)};
                 // Calls the view's render method
                 this.render();
 
@@ -23,7 +23,9 @@ define(["jquery", "backbone", "models/Model", "text!templates/heading.html", "vi
             events: {
 
             },
-
+            addPost: function(model){
+                var newPillView= new PostPillView({model:model});
+            }
             testFun: function() {
                 var authView= new AuthView();
                 var postModel = new PostModel();
